@@ -1,0 +1,16 @@
+name: hotels_airflights
+services:
+  db:
+    image: mysql:latest 
+    container_name: hotels_airflights_db
+    environment:
+      MYSQL_DATABASE: hotels_airflights_db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD : password
+    ports:
+      - '3306:3306'
+    volumes:
+      - my-db-data:/var/lib/mysql
+volumes:
+  my-db-data:

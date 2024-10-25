@@ -26,11 +26,13 @@ public interface HotelRepository extends JpaRepository<HotelEntity, Long> {
 	
 	@Query ("SELECT h "
 			+ " from HotelEntity h "
+			+ " where h.checkIn between :startDate and :endDate ")
+	public List<HotelEntity> searchCheckIn (Date startDate, Date endDate);
+	
+	@Query ("SELECT h "
+			+ " from HotelEntity h "
 			+ " where h.price between :min and :max " ) //Everytime I put a variable : and then the variable / or you can find ?, empata with the first parameter
 	public List<HotelEntity> rangePrice(Double min, Double max); //It can use Search but usually use FIND
 
-	@Query ("SELECT h "
-			+ " from HotelEntity h "
-			+ " where h.checkIn between :startDate and :endDate ")
-	public List<HotelEntity> searchCheckIn (Date startDate, Date endDate);
+
 }

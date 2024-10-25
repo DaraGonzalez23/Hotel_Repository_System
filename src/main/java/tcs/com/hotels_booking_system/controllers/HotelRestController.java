@@ -18,7 +18,8 @@ import java.util.List;
 
 import tcs.com.hotels_booking_system.entities.HotelEntity;
 import tcs.com.hotels_booking_system.services.HotelService;
-@CrossOrigin (origins = {"*"})
+
+@CrossOrigin(origins = { "*" })
 @RestController
 @RequestMapping("/api")
 public class HotelRestController {
@@ -64,7 +65,7 @@ public class HotelRestController {
 	@PutMapping("/hotels/{id}") // Update all the object
 	public ResponseEntity<Object> update(@RequestBody HotelEntity hotelEntity, @PathVariable Long id) { // Access to ID
 																										// from the
-																										// parameter
+		// parameter
 		if (id == null) {
 			return new ResponseEntity<>("Please send an Id", HttpStatus.BAD_REQUEST);
 		} else {
@@ -83,23 +84,23 @@ public class HotelRestController {
 		}
 	}
 
-	@GetMapping("hotels/locations/{location}")
+	@GetMapping("/hotels/locations/{location}")
 	public ResponseEntity<Object> viewLocations(@PathVariable String location) {
 		return new ResponseEntity<>(hotelService.searchLocation(location), HttpStatus.ACCEPTED);
 	}
 
-	@GetMapping("hotels/hotelsName/{hotelName}")
-	public ResponseEntity<Object> viewHotelName(@PathVariable String hotelName) {
+	@GetMapping("/hotels/hotelsName/{hotelName}")
+	public ResponseEntity<Object> viewHotelsName(@PathVariable String hotelName) {
 		return new ResponseEntity<>(hotelService.searchHotelName(hotelName), HttpStatus.ACCEPTED);
 	}
 
-	@GetMapping("hotels/prices/{min}/{max}")
-	public ResponseEntity<Object> viewPrice(@PathVariable Double min, @PathVariable Double max) {
+	@GetMapping("/hotels/prices/{min}/{max}")
+	public ResponseEntity<Object> viewPrices(@PathVariable Double min, @PathVariable Double max) {
 		return new ResponseEntity<>(hotelService.rangePrice(min, max), HttpStatus.ACCEPTED);
 	}
 
 	@GetMapping("/hotels/checkin/{startDate}/{endDate}")
-	public ResponseEntity<List<HotelEntity>> searchCheckIn(
+	public ResponseEntity<List<HotelEntity>> searchChecksIn(
 			@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date startDate,
 			@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date endDate) {
 		List<HotelEntity> hotels = hotelService.searchCheckIn(startDate, endDate);

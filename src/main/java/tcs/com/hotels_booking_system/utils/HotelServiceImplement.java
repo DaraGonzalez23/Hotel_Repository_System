@@ -59,8 +59,8 @@ public class HotelServiceImplement implements HotelService {
 	}
 
 	@Override
-	public boolean isExist(Long i) {
-		return hotelRepository.existsById(i);
+	public boolean isExist(Long id) {
+		return hotelRepository.existsById(id);
 	}
 
 	@Override
